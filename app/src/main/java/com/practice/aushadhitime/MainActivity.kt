@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import androidx.compose.material3.OutlinedTextField
 
 class MainActivity : ComponentActivity(){
 
@@ -75,5 +76,46 @@ class MainActivity : ComponentActivity(){
 
 @Composable
 fun RegistrationScreen(){
-    Text("Registration Screen")
+    var name by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var pwd by remember { mutableStateOf("") }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier= Modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.Center
+    ){
+
+        Text("Registration", fontSize=28.sp, fontWeight=FontWeight.Bold)
+
+        Spacer(
+            modifier=Modifier.height(20.dp)
+        )
+
+        OutlinedTextField(
+            value=name,
+            onValueChange = {name=it},
+            label={Text("Name")},
+        )
+
+        Spacer(
+            modifier=Modifier.height(20.dp)
+        )
+
+        OutlinedTextField(
+            value=email,
+            onValueChange = {email=it},
+            label={Text("Email")},
+        )
+
+        Spacer(
+            modifier=Modifier.height(20.dp)
+        )
+
+        OutlinedTextField(
+            value=pwd,
+            onValueChange = {pwd=it},
+            label={Text("Password")},
+        )
+
+    }
 }
